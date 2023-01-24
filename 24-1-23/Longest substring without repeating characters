@@ -1,0 +1,24 @@
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+       int p = 0;
+       int q=0;
+       int len =0;
+       HashMap<Character,Integer> hmp = new HashMap<>();
+       while(q<s.length()){
+           if(hmp.containsKey(s.charAt(q))){
+               while(hmp.containsKey(s.charAt(q))){
+                   hmp.remove(s.charAt(p));
+                   p+=1;
+               }
+           }
+           else{
+               hmp.put(s.charAt(q),1);
+               q=q+1;
+           }
+           len = Integer.max(len , q-p);
+
+       } 
+       return len;
+    }
+
+}
